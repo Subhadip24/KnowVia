@@ -1,5 +1,6 @@
 # KnowVia
 SIH PROJECT 
+
 📚 KnowVia– Community-Driven Learning Platform with AI Tutor
 
 KnowVia is a modern, full-stack community-based platform for students and teachers, built to make learning more collaborative, accessible, and intelligent.
@@ -50,7 +51,6 @@ Notes, videos, and AI queries are all API-driven
 | Backend        | PYTHON                                        |
 | Database       | SQL                                           |
 | AI             | **Gemini**                                    |
-       |
 
 
 # 🔐 Environment Variables
