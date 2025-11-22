@@ -1,0 +1,1781 @@
+
+<!--Complete working HTML template with fixed JavaScript
+HTML_TEMPLATE -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KnowVia - Complete AI Learning Platform</title>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4ade80;
+            --error: #f87171;
+            --warning: #fbbf24;
+            --info: #3b82f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: var(--dark);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(15, 1, 1, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            background: rgb(17, 1, 1);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: 2px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgb(15, 1, 1);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: rgb(244, 238, 238);
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+            border: 2px solid var(--success);
+        }
+
+        .btn-info {
+            background: var(--info);
+            color: white;
+            border: 2px solid var(--info);
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: var(--dark);
+            border: 2px solid var(--warning);
+        }
+
+        .main-content {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            min-height: 600px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            color: white;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .hero-feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-feature h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .subject-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .subject-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary);
+        }
+
+        .subject-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent);
+        }
+
+        .subject-card.mathematics::before { background: #ff6b6b; }
+        .subject-card.physics::before { background: #4ecdc4; }
+        .subject-card.chemistry::before { background: #45b7d1; }
+        .subject-card.biology::before { background: #96ceb4; }
+        .subject-card.computer_science::before { background: #feca57; }
+        .subject-card.english::before { background: #a29bfe; }
+
+        .subject-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .subject-icon {
+            font-size: 3rem;
+            line-height: 1;
+        }
+
+        .subject-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .subject-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .subject-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .topic-tag {
+            background: var(--light);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .subject-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .subject-actions {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .notes-list, .quiz-list {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .note-card, .quiz-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .note-card:hover, .quiz-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .note-header, .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .note-title, .quiz-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .note-meta, .quiz-meta {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .quiz-questions {
+            margin: 2rem 0;
+        }
+
+        .question {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .question h4 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .options {
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .option {
+            background: white;
+            padding: 0.8rem;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            border-color: var(--primary);
+            background: rgba(67, 97, 238, 0.05);
+        }
+
+        .option.selected {
+            border-color: var(--primary);
+            background: rgba(67, 97, 238, 0.1);
+        }
+
+        .option.correct {
+            border-color: var(--success);
+            background: rgba(74, 222, 128, 0.1);
+        }
+
+        .option.incorrect {
+            border-color: var(--error);
+            background: rgba(248, 113, 113, 0.1);
+        }
+
+        .ai-tutor {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .ai-tutor h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .tutor-input {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tutor-input input, .tutor-input select {
+            flex: 1;
+            min-width: 200px;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        .tutor-response {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid #fff;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .alert-success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 2px solid #a7f3d0;
+        }
+
+        .alert-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 2px solid #fecaca;
+        }
+
+        .alert-info {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 2px solid #93c5fd;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            position: relative;
+        }
+
+        .video-thumbnail::after {
+            content: '▶';
+            position: absolute;
+            font-size: 2rem;
+            background: rgba(0,0,0,0.7);
+            padding: 0.5rem 0.7rem;
+            border-radius: 50%;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+        }
+
+        .video-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-stats {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .difficulty {
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .difficulty.Beginner {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .difficulty.Intermediate {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .difficulty.Advanced {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header-content {
+                text-align: center;
+            }
+            
+            .nav-buttons {
+                width: 100%;
+                justify-content: center;
+                margin-top: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tutor-input {
+                flex-direction: column;
+            }
+            
+            .tutor-input input, .tutor-input select {
+                min-width: 100%;
+            }
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #00070e;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .quiz-active {
+            display: block !important;
+        }
+
+        .quiz-hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/static/logo.png" alt="Logo" style="height:48px;vertical-align:middle;margin-right:12px;">
+                    KnowVia
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn btn-primary" onclick="showSection('home')">🏠 Home</button>
+                    <button class="btn btn-secondary" onclick="showSection('subjects')">📚 Subjects</button>
+                    <button class="btn btn-secondary" onclick="showSection('notes')">📝 Notes</button>
+                    <button class="btn btn-secondary" onclick="showSection('quiz')">🧠 Quizzes</button>
+                    <button class="btn btn-secondary" onclick="showSection('tutor')">🤖 AI Tutor</button>
+                    <button class="btn btn-secondary" onclick="showSection('doubts')">❓ Doubts</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Home Section -->
+            <div id="home-section" class="section active">
+                <div class="hero">
+                    <div class="hero-content">
+                        <h1>Welcome to KnowVia</h1>
+                        <p>Your complete AI-powered learning platform with subjects, notes, videos, quizzes, and personalized tutoring!</p>
+                        
+                        <div class="hero-features">
+                            <div class="hero-feature">
+                                <h3>📚 6 Subjects</h3>
+                                <p>Math, Physics, Chemistry, Biology, CS & English</p>
+                            </div>
+                            <div class="hero-feature">
+                                <h3>🤖 AI Tutor</h3>
+                                <p>24/7 personalized learning assistant</p>
+                            </div>
+                            <div class="hero-feature">
+                                <h3>📝 Smart Notes</h3>
+                                <p>Interactive study materials</p>
+                            </div>
+                            <div class="hero-feature">
+                                <h3>🧠 Quizzes</h3>
+                                <p>Test your knowledge</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label">Subjects Available</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="notes-count">0</div>
+                        <div class="stat-label">Study Notes</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="quiz-count">0</div>
+                        <div class="stat-label">Practice Quizzes</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="doubts-count">0</div>
+                        <div class="stat-label">Doubts Solved</div>
+                    </div>
+                </div>
+
+                <h2 style="margin-bottom: 2rem; color: var(--primary); text-align: center;">🚀 Explore Subjects</h2>
+                <div class="subjects-grid" id="home-subjects"></div>
+            </div>
+
+            <!-- Subjects Section -->
+            <div id="subjects-section" class="section">
+                <h2 style="margin-bottom: 2rem; color: var(--primary);">📚 Available Subjects</h2>
+                <div class="subjects-grid" id="subjects-container"></div>
+            </div>
+
+            <!-- Subject Detail Section -->
+            <div id="subject-detail-section" class="section">
+                <button class="btn btn-secondary" onclick="showSection('subjects')" style="margin-bottom: 2rem;">← Back to Subjects</button>
+                <div id="subject-detail-container"></div>
+            </div>
+
+            <!-- Notes Section -->
+            <div id="notes-section" class="section">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap;">
+                    <h2 style="color: var(--primary); margin: 0;">📝 Study Notes</h2>
+                    <button class="btn btn-primary" onclick="showCreateNote()">➕ Create Note</button>
+                </div>
+                
+                <div id="create-note" class="card" style="display: none;">
+                    <h3>Create New Note</h3>
+                    <form id="note-form">
+                        <div class="form-group">
+                            <label for="note-subject">Subject</label>
+                            <select id="note-subject" class="form-control" required>
+                                <option value="">Select Subject</option>
+                                <option value="mathematics">Mathematics</option>
+                                <option value="physics">Physics</option>
+                                <option value="chemistry">Chemistry</option>
+                                <option value="biology">Biology</option>
+                                <option value="computer_science">Computer Science</option>
+                                <option value="english">English Literature</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="note-title">Title</label>
+                            <input type="text" id="note-title" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="note-content">Content (Markdown supported)</label>
+                            <textarea id="note-content" class="form-control" rows="10" required></textarea>
+                        </div>
+                        <div style="display: flex; gap: 1rem;">
+                            <button type="submit" class="btn btn-primary">💾 Save Note</button>
+                            <button type="button" class="btn btn-secondary" onclick="hideCreateNote()">❌ Cancel</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="notes-list" id="notes-container"></div>
+            </div>
+
+            <!-- Quiz Section -->
+            <div id="quiz-section" class="section">
+                <h2 style="margin-bottom: 2rem; color: var(--primary);">🧠 Practice Quizzes</h2>
+                
+                <div id="quiz-list-view">
+                    <div class="quiz-list" id="quiz-container"></div>
+                </div>
+
+                <div id="quiz-taking-view" class="quiz-hidden">
+                    <div class="card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                            <h3 id="quiz-title">Quiz Title</h3>
+                            <button class="btn btn-secondary" onclick="exitQuiz()">❌ Exit Quiz</button>
+                        </div>
+                        
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="quiz-progress" style="width: 0%"></div>
+                        </div>
+                        
+                        <div id="quiz-questions-container"></div>
+                        
+                        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                            <button class="btn btn-secondary" id="prev-btn" onclick="previousQuestion()" style="display: none;">← Previous</button>
+                            <button class="btn btn-primary" id="next-btn" onclick="nextQuestion()">Next →</button>
+                            <button class="btn btn-success" id="submit-quiz-btn" onclick="submitQuiz()" style="display: none;">🏆 Submit Quiz</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="quiz-results-view" class="quiz-hidden">
+                    <div class="card">
+                        <h3>🎉 Quiz Results</h3>
+                        <div id="quiz-results-container"></div>
+                        <button class="btn btn-primary" onclick="backToQuizzes()" style="margin-top: 2rem;">← Back to Quizzes</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Tutor Section -->
+            <div id="tutor-section" class="section">
+                <div class="ai-tutor">
+                    <h3>🤖 AI Tutor - Ask Anything!</h3>
+                    <p>Get instant explanations, step-by-step solutions, and personalized learning guidance.</p>
+                    
+                    <div class="tutor-input">
+                        <select id="tutor-subject" style="flex: 0 0 200px;">
+                            <option value="">Any Subject</option>
+                            <option value="mathematics">Mathematics</option>
+                            <option value="physics">Physics</option>
+                            <option value="chemistry">Chemistry</option>
+                            <option value="biology">Biology</option>
+                            <option value="computer_science">Computer Science</option>
+                            <option value="english">English Literature</option>
+                        </select>
+                        <input type="text" id="tutor-question" placeholder="Ask me anything... e.g., How does photosynthesis work?">
+                        <button class="btn btn-warning" onclick="askAITutor()" id="tutor-btn">
+                            <span>🧠 Ask AI</span>
+                        </button>
+                    </div>
+                    
+                    <div id="tutor-response" class="tutor-response" style="display: none;"></div>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">💡 Example Questions</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                        <button class="btn btn-secondary" onclick="askExample('mathematics', 'Solve: x² - 5x + 6 = 0')">📐 Solve Quadratic Equation</button>
+                        <button class="btn btn-secondary" onclick="askExample('physics', 'Explain Newton&#39;s second law with examples')">⚛️ Newton's Laws</button>
+                        <button class="btn btn-secondary" onclick="askExample('chemistry', 'What is the difference between ionic and covalent bonds?')">🧪 Chemical Bonding</button>
+                        <button class="btn btn-secondary" onclick="askExample('biology', 'How does DNA replication work?')">🧬 DNA Replication</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Doubts Section -->
+            <div id="doubts-section" class="section">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap;">
+                    <h2 style="color: var(--primary); margin: 0;">❓ Post Your Doubts</h2>
+                    <button class="btn btn-primary" onclick="showPostDoubt()">➕ Post New Doubt</button>
+                </div>
+                
+                <div id="post-doubt" class="card" style="display: none;">
+                    <h3>Post Your Doubt</h3>
+                    <form id="doubt-form">
+                        <div class="form-group">
+                            <label for="doubt-title">Doubt Title</label>
+                            <input type="text" id="doubt-title" class="form-control" placeholder="e.g., How to solve this equation?" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="doubt-description">Description (Optional)</label>
+                            <textarea id="doubt-description" class="form-control" rows="3" placeholder="Add context..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="doubt-file">Upload Image/Video/PDF</label>
+                            <input type="file" id="doubt-file" class="form-control" accept="image/*,video/*,.pdf">
+                        </div>
+                        <div style="display: flex; gap: 1rem;">
+                            <button type="submit" class="btn btn-primary" id="doubt-submit-btn">
+                                <span>🚀 Post Doubt</span>
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="hidePostDoubt()">❌ Cancel</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div id="doubts-container"></div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a onclick="showSection('home')">Home</a>
+                    <a onclick="showSection('subjects')">Subjects</a>
+                    <a onclick="showSection('notes')">Notes</a>
+                    <a onclick="showSection('quiz')">Quizzes</a>
+                    <a onclick="showSection('tutor')">AI Tutor</a>
+                </div>
+                <p>&copy; 2025 KnowVia - Complete AI Learning Platform</p>
+                <p>Empowering students with AI-powered education 🚀</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Global variables
+        let subjects = {};
+        let notes = [];
+        let quizzes = [];
+        let doubts = [];
+        let currentQuiz = null;
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        let currentSection = 'home';
+
+        // Initialize app when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('KnowVia initializing...');
+            loadAllData();
+            setupEventListeners();
+            updateActiveButton('home');
+        });
+
+        // Setup all event listeners
+        function setupEventListeners() {
+            // Forms
+            const noteForm = document.getElementById('note-form');
+            if (noteForm) {
+                noteForm.addEventListener('submit', handleNoteSubmit);
+            }
+            
+            const doubtForm = document.getElementById('doubt-form');
+            if (doubtForm) {
+                doubtForm.addEventListener('submit', handleDoubtSubmit);
+            }
+            
+            // Tutor input enter key
+            const tutorQuestion = document.getElementById('tutor-question');
+            if (tutorQuestion) {
+                tutorQuestion.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        askAITutor();
+                    }
+                });
+            }
+        }
+
+        // Load all data
+        async function loadAllData() {
+            try {
+                await Promise.all([
+                    loadSubjects(),
+                    loadNotes(),
+                    loadQuizzes(),
+                    loadDoubts()
+                ]);
+                updateStats();
+                console.log('All data loaded successfully');
+            } catch (error) {
+                console.error('Error loading data:', error);
+                showAlert('Error loading data: ' + error.message, 'error');
+            }
+        }
+
+        // Navigation functions
+        function showSection(section) {
+            console.log('Showing section:', section);
+            
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(s => s.classList.remove('active'));
+            
+            // Show target section
+            const targetSection = document.getElementById(section + '-section');
+            if (targetSection) {
+                targetSection.classList.add('active');
+                currentSection = section;
+                updateActiveButton(section);
+            } else {
+                console.error('Section not found:', section);
+            }
+        }
+
+        function updateActiveButton(activeSection) {
+            // Update navigation button states
+            const buttons = document.querySelectorAll('.nav-buttons .btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('btn-primary');
+                btn.classList.add('btn-secondary');
+            });
+            
+            // Find and activate the correct button
+            const activeBtn = Array.from(buttons).find(btn => 
+                btn.textContent.toLowerCase().includes(activeSection === 'home' ? 'home' : activeSection)
+            );
+            if (activeBtn) {
+                activeBtn.classList.remove('btn-secondary');
+                activeBtn.classList.add('btn-primary');
+            }
+        }
+
+        // Load subjects
+        async function loadSubjects() {
+            try {
+                const response = await fetch('/api/subjects');
+                if (!response.ok) throw new Error('Failed to load subjects');
+                subjects = await response.json();
+                renderSubjects();
+            } catch (error) {
+                console.error('Error loading subjects:', error);
+                showAlert('Failed to load subjects', 'error');
+            }
+        }
+
+        // Render subjects
+        function renderSubjects() {
+            const container = document.getElementById('subjects-container');
+            const homeContainer = document.getElementById('home-subjects');
+            
+            const subjectsHTML = Object.entries(subjects).map(([key, subject]) => `
+                <div class="subject-card ${key}" onclick="exploreSubject('${key}')">
+                    <div class="subject-header">
+                        <div class="subject-icon">${subject.icon}</div>
+                        <div class="subject-title">${subject.name}</div>
+                    </div>
+                    <div class="subject-description">${subject.description}</div>
+                    <div class="subject-topics">
+                        ${subject.topics.slice(0, 4).map(topic => `<span class="topic-tag">${topic}</span>`).join('')}
+                        ${subject.topics.length > 4 ? `<span class="topic-tag" style="background: var(--primary); color: white;">+${subject.topics.length - 4} more</span>` : ''}
+                    </div>
+                    <div class="subject-stats">
+                        <span>📝 ${subject.notes_count} Notes</span>
+                        <span>🧠 ${subject.quiz_count} Quizzes</span>
+                        <span>🎥 ${subject.videos.length} Videos</span>
+                    </div>
+                    <div class="subject-actions">
+                        <button class="btn btn-primary" onclick="event.stopPropagation(); viewSubjectDetail('${key}')">📖 Explore</button>
+                        <button class="btn btn-success" onclick="event.stopPropagation(); viewSubjectVideos('${key}')">🎥 Videos</button>
+                    </div>
+                </div>
+            `).join('');
+            
+            if (container) container.innerHTML = subjectsHTML;
+            if (homeContainer) homeContainer.innerHTML = subjectsHTML;
+        }
+
+        function exploreSubject(subjectKey) {
+            console.log('Exploring subject:', subjectKey);
+            viewSubjectDetail(subjectKey);
+        }
+
+        function viewSubjectDetail(subjectKey) {
+            const subject = subjects[subjectKey];
+            if (!subject) return;
+
+            document.getElementById('subject-detail-container').innerHTML = `
+                <div class="card">
+                    <div class="subject-header">
+                        <div class="subject-icon">${subject.icon}</div>
+                        <div class="subject-title">${subject.name}</div>
+                    </div>
+                    <div class="subject-description" style="font-size: 1.1rem; margin-bottom: 2rem;">${subject.description}</div>
+                    
+                    <h3 style="margin-bottom: 1rem;">📚 Topics Covered</h3>
+                    <div class="subject-topics" style="margin-bottom: 3rem;">
+                        ${subject.topics.map(topic => `<span class="topic-tag">${topic}</span>`).join('')}
+                    </div>
+
+                    <h3 style="margin-bottom: 1rem;">📊 Course Statistics</h3>
+                    <div class="subject-stats" style="margin-bottom: 3rem;">
+                        <span>📝 ${subject.notes_count} Study Notes</span>
+                        <span>🧠 ${subject.quiz_count} Practice Quizzes</span>
+                        <span>🎥 ${subject.videos.length} Video Lessons</span>
+                    </div>
+
+                    <div class="subject-actions">
+                        <button class="btn btn-primary" onclick="viewSubjectVideos('${subjectKey}')">🎥 Watch Videos</button>
+                        <button class="btn btn-success" onclick="showSection('notes')">📝 Study Notes</button>
+                        <button class="btn btn-info" onclick="showSection('quiz')">🧠 Take Quiz</button>
+                    </div>
+                </div>
+            `;
+            
+            showSection('subject-detail');
+        }
+
+        function viewSubjectVideos(subjectKey) {
+            const subject = subjects[subjectKey];
+            if (!subject) return;
+
+            const videosHTML = `
+                <div class="card">
+                    <h2 style="color: var(--primary); margin-bottom: 2rem;">🎥 ${subject.name} Videos</h2>
+                    
+                    <div class="video-grid">
+                        ${subject.videos.map((video, index) => `
+                            <div class="video-card" onclick="playVideo('${subjectKey}', ${index})">
+                                <div class="video-thumbnail">
+                                    ${subject.icon}
+                                </div>
+                                <div class="video-info">
+                                    <div class="video-title">${video.title}</div>
+                                    <div class="video-stats">
+                                        <span>⏱️ ${video.duration}</span>
+                                        <span>👁️ ${video.views} views</span>
+                                        <span class="difficulty ${video.difficulty}">${video.difficulty}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <button class="btn btn-secondary" onclick="showSection('subjects')" style="margin-top: 2rem;">← Back to Subjects</button>
+                </div>
+            `;
+            
+            document.querySelector('.main-content').innerHTML = videosHTML;
+        }
+
+        function playVideo(subject, index) {
+            const video = subjects[subject].videos[index];
+            showAlert(`🎥 Playing: ${video.title}\\n\\nThis would open the video player in a real implementation.`, 'info');
+        }
+
+        // Load and render notes
+        async function loadNotes() {
+            try {
+                const response = await fetch('/api/notes');
+                if (!response.ok) throw new Error('Failed to load notes');
+                notes = await response.json();
+                renderNotes();
+            } catch (error) {
+                console.error('Error loading notes:', error);
+            }
+        }
+
+        function renderNotes() {
+            const container = document.getElementById('notes-container');
+            if (!container) return;
+            
+            if (notes.length === 0) {
+                container.innerHTML = '<div style="text-align: center; padding: 2rem; color: #666;">No notes available. Create your first note!</div>';
+                return;
+            }
+            
+            container.innerHTML = notes.map(note => {
+                const voteKey = `note-vote-${note.id}`;
+                const voted = localStorage.getItem(voteKey);
+                return `
+                <div class="note-card">
+                    <div class="note-header">
+                        <div class="note-title">${note.title}</div>
+                        <div class="note-meta">
+                            ${subjects[note.subject]?.icon || '📝'} ${subjects[note.subject]?.name || note.subject} • ${note.created}
+                        </div>
+                    </div>
+                    <div class="note-content" style="max-height: 200px; overflow-y: auto; background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                        <pre style="white-space: pre-wrap; font-family: inherit;">${note.content}</pre>
+                    </div>
+                    <div style=\"margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center;\">
+                        <button class=\"btn btn-success\" onclick=\"upvoteNote(${note.id})\" id=\"upvote-note-btn-${note.id}\" ${voted ? 'disabled' : ''}>👍 Upvote (<span id=\"upvotes-note-${note.id}\">${note.upvotes || 0}</span>)</button>
+                        <button class=\"btn btn-warning\" onclick=\"downvoteNote(${note.id})\" id=\"downvote-note-btn-${note.id}\" ${voted ? 'disabled' : ''}>👎 Downvote (<span id=\"downvotes-note-${note.id}\">${note.downvotes || 0}</span>)</button>
+                    </div>
+                    <button class="btn btn-primary" onclick="expandNote(${note.id})">📖 Read Full Note</button>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function expandNote(noteId) {
+        // Upvote and Downvote functions for notes
+        function upvoteNote(id) {
+            const voteKey = `note-vote-${id}`;
+            if (localStorage.getItem(voteKey)) {
+                alert('You have already voted on this note.');
+                return;
+            }
+            fetch(`/api/notes/${id}/upvote`, {method: 'POST'})
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById(`upvotes-note-${id}`).textContent = data.upvotes;
+                        localStorage.setItem(voteKey, 'up');
+                        document.getElementById(`upvote-note-btn-${id}`).disabled = true;
+                        document.getElementById(`downvote-note-btn-${id}`).disabled = true;
+                    }
+                });
+        }
+
+        function downvoteNote(id) {
+            const voteKey = `note-vote-${id}`;
+            if (localStorage.getItem(voteKey)) {
+                alert('You have already voted on this note.');
+                return;
+            }
+            fetch(`/api/notes/${id}/downvote`, {method: 'POST'})
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById(`downvotes-note-${id}`).textContent = data.downvotes;
+                        localStorage.setItem(voteKey, 'down');
+                        document.getElementById(`upvote-note-btn-${id}`).disabled = true;
+                        document.getElementById(`downvote-note-btn-${id}`).disabled = true;
+                    }
+                });
+        }
+
+        // Make upvote/downvote globally accessible for notes
+        window.upvoteNote = upvoteNote;
+        window.downvoteNote = downvoteNote;
+            const note = notes.find(n => n.id === noteId);
+            if (!note) return;
+
+            const expandedHTML = `
+                <div class="card">
+                    <h2 style="color: var(--primary);">${note.title}</h2>
+                    <p style="color: #666; margin-bottom: 2rem;">${subjects[note.subject]?.icon || '📝'} ${subjects[note.subject]?.name || note.subject} • Created: ${note.created} • By: ${note.author}</p>
+                    <div style="line-height: 1.8; background: #f8f9fa; padding: 2rem; border-radius: 10px;">
+                        <pre style="white-space: pre-wrap; font-family: inherit;">${note.content}</pre>
+                    </div>
+                    <button class="btn btn-secondary" onclick="backToNotes()" style="margin-top: 2rem;">← Back to Notes</button>
+                </div>
+            `;
+            document.querySelector('.main-content').innerHTML = expandedHTML;
+        }
+
+        // Note creation functions
+        function showCreateNote() {
+            document.getElementById('create-note').style.display = 'block';
+            document.getElementById('note-title').focus();
+        }
+
+        function hideCreateNote() {
+            document.getElementById('create-note').style.display = 'none';
+            document.getElementById('note-form').reset();
+        // Back to Notes function (top-level)
+        function backToNotes() {
+            showSection('notes');
+            loadNotes();
+        }
+        window.backToNotes = backToNotes;
+        }
+
+        async function handleNoteSubmit(event) {
+            event.preventDefault();
+            
+            const formData = {
+                subject: document.getElementById('note-subject').value,
+                title: document.getElementById('note-title').value,
+                content: document.getElementById('note-content').value
+            };
+            
+            try {
+                const response = await fetch('/api/notes', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                if (!response.ok) throw new Error('Failed to create note');
+                
+                showAlert('Note created successfully! 📝', 'success');
+                hideCreateNote();
+                await loadNotes();
+                updateStats();
+            } catch (error) {
+                showAlert('Error creating note: ' + error.message, 'error');
+            }
+        }
+
+        // Load and render quizzes
+        async function loadQuizzes() {
+            try {
+                const response = await fetch('/api/quizzes');
+                if (!response.ok) throw new Error('Failed to load quizzes');
+                quizzes = await response.json();
+                renderQuizzes();
+            } catch (error) {
+                console.error('Error loading quizzes:', error);
+            }
+        }
+
+        function renderQuizzes() {
+            const container = document.getElementById('quiz-container');
+            if (!container) return;
+            
+            if (quizzes.length === 0) {
+                container.innerHTML = '<div style="text-align: center; padding: 2rem; color: #666;">No quizzes available yet.</div>';
+                return;
+            }
+            
+            container.innerHTML = quizzes.map(quiz => `
+                <div class="quiz-card">
+                    <div class="quiz-header">
+                        <div class="quiz-title">${quiz.title}</div>
+                        <div class="quiz-meta">
+                            ${subjects[quiz.subject]?.icon || '🧠'} ${subjects[quiz.subject]?.name || quiz.subject}
+                        </div>
+                    </div>
+                    <div style="margin: 1rem 0;">
+                        <p style="color: #666;">${quiz.description}</p>
+                        <p style="margin-top: 0.5rem;">📊 ${quiz.questions.length} questions</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="startQuiz(${quiz.id})">🚀 Start Quiz</button>
+                </div>
+            `).join('');
+        }
+
+        // Quiz functions
+        function startQuiz(quizId) {
+            currentQuiz = quizzes.find(q => q.id === quizId);
+            if (!currentQuiz) return;
+            
+            currentQuestionIndex = 0;
+            userAnswers = new Array(currentQuiz.questions.length).fill(-1);
+            
+            document.getElementById('quiz-list-view').classList.add('quiz-hidden');
+            document.getElementById('quiz-taking-view').classList.remove('quiz-hidden');
+            document.getElementById('quiz-taking-view').classList.add('quiz-active');
+            
+            document.getElementById('quiz-title').textContent = currentQuiz.title;
+            renderCurrentQuestion();
+            updateQuizProgress();
+        }
+
+        function renderCurrentQuestion() {
+            const question = currentQuiz.questions[currentQuestionIndex];
+            const container = document.getElementById('quiz-questions-container');
+            
+            container.innerHTML = `
+                <div class="question">
+                    <h4>Question ${currentQuestionIndex + 1} of ${currentQuiz.questions.length}</h4>
+                    <p style="font-size: 1.1rem; margin-bottom: 1rem;">${question.question}</p>
+                    <div class="options">
+                        ${question.options.map((option, index) => `
+                            <div class="option ${userAnswers[currentQuestionIndex] === index ? 'selected' : ''}" 
+                                 onclick="selectAnswer(${index})">
+                                ${String.fromCharCode(65 + index)}. ${option}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            
+            // Update navigation buttons
+            document.getElementById('prev-btn').style.display = currentQuestionIndex > 0 ? 'block' : 'none';
+            document.getElementById('next-btn').style.display = currentQuestionIndex < currentQuiz.questions.length - 1 ? 'block' : 'none';
+            document.getElementById('submit-quiz-btn').style.display = currentQuestionIndex === currentQuiz.questions.length - 1 ? 'block' : 'none';
+        }
+
+        function selectAnswer(answerIndex) {
+            userAnswers[currentQuestionIndex] = answerIndex;
+            renderCurrentQuestion();
+            updateQuizProgress();
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < currentQuiz.questions.length - 1) {
+                currentQuestionIndex++;
+                renderCurrentQuestion();
+                updateQuizProgress();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderCurrentQuestion();
+                updateQuizProgress();
+            }
+        }
+
+        function updateQuizProgress() {
+            const answered = userAnswers.filter(a => a !== -1).length;
+            const percentage = (answered / currentQuiz.questions.length) * 100;
+            document.getElementById('quiz-progress').style.width = percentage + '%';
+        }
+
+        async function submitQuiz() {
+            if (userAnswers.includes(-1)) {
+                if (!confirm('You have unanswered questions. Submit anyway?')) {
+                    return;
+                }
+            }
+            
+            try {
+                const response = await fetch(`/api/quiz/${currentQuiz.id}/submit`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ answers: userAnswers })
+                });
+                
+                if (!response.ok) throw new Error('Failed to submit quiz');
+                
+                const results = await response.json();
+                showQuizResults(results);
+            } catch (error) {
+                showAlert('Error submitting quiz: ' + error.message, 'error');
+            }
+        }
+
+        function showQuizResults(results) {
+            document.getElementById('quiz-taking-view').classList.add('quiz-hidden');
+            document.getElementById('quiz-results-view').classList.remove('quiz-hidden');
+            document.getElementById('quiz-results-view').classList.add('quiz-active');
+            
+            const container = document.getElementById('quiz-results-container');
+            container.innerHTML = `
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <div style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;">
+                        ${results.percentage >= 80 ? '🎉' : results.percentage >= 60 ? '👍' : '📚'}
+                    </div>
+                    <h2 style="color: var(--primary);">Your Score: ${results.score}/${results.total}</h2>
+                    <p style="font-size: 1.2rem; color: #666;">${results.percentage.toFixed(1)}% Correct</p>
+                </div>
+                
+                <div style="margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">📊 Question Review</h3>
+                    ${results.results.map((result, index) => `
+                        <div style="background: ${result.is_correct ? '#d1fae5' : '#fee2e2'}; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                            <p><strong>Question ${index + 1}:</strong> ${currentQuiz.questions[index].question}</p>
+                            <p><strong>Your answer:</strong> ${currentQuiz.questions[index].options[result.user_answer] || 'Not answered'}</p>
+                            ${!result.is_correct ? `<p><strong>Correct answer:</strong> ${currentQuiz.questions[index].options[result.correct_answer]}</p>` : ''}
+                            <p><strong>Explanation:</strong> ${result.explanation}</p>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function exitQuiz() {
+            if (confirm('Are you sure you want to exit the quiz? Your progress will be lost.')) {
+                backToQuizzes();
+            }
+        }
+
+        function backToQuizzes() {
+            document.getElementById('quiz-taking-view').classList.add('quiz-hidden');
+            document.getElementById('quiz-results-view').classList.add('quiz-hidden');
+            document.getElementById('quiz-list-view').classList.remove('quiz-hidden');
+            
+            currentQuiz = null;
+            currentQuestionIndex = 0;
+            userAnswers = [];
+        }
+
+        // AI Tutor functions
+        async function askAITutor() {
+            const question = document.getElementById('tutor-question').value.trim();
+            const subject = document.getElementById('tutor-subject').value;
+            
+            if (!question) {
+                showAlert('Please enter a question', 'error');
+                return;
+            }
+            
+            const btn = document.getElementById('tutor-btn');
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<div class="loading"></div> Thinking...';
+            btn.disabled = true;
+            
+            try {
+                const response = await fetch('/api/ai-tutor', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        question: question,
+                        subject: subject
+                    })
+                });
+                
+                if (!response.ok) throw new Error('AI tutor request failed');
+                
+                const result = await response.json();
+                
+                const responseDiv = document.getElementById('tutor-response');
+                responseDiv.innerHTML = `
+                    <h4>🤖 AI Tutor Response:</h4>
+                    <div style="white-space: pre-wrap; line-height: 1.6; margin: 1rem 0;">${result.answer}</div>
+                    <div style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">
+                        ${result.timestamp} • Subject: ${result.subject || 'General'}
+                    </div>
+                `;
+                responseDiv.style.display = 'block';
+                
+                document.getElementById('tutor-question').value = '';
+                
+            } catch (error) {
+                console.error('AI Tutor error:', error);
+                showAlert('AI Tutor is not available right now. Please try again later.', 'error');
+            } finally {
+                btn.innerHTML = originalHTML;
+                btn.disabled = false;
+            }
+        }
+
+        function askExample(subject, question) {
+            document.getElementById('tutor-subject').value = subject;
+            document.getElementById('tutor-question').value = question;
+            askAITutor();
+        }
+
+        // Doubt functions
+        async function loadDoubts() {
+            try {
+                const response = await fetch('/api/doubts');
+                if (!response.ok) throw new Error('Failed to load doubts');
+                doubts = await response.json();
+                renderDoubts();
+            } catch (error) {
+                console.error('Error loading doubts:', error);
+            }
+        }
+
+        function renderDoubts() {
+            const container = document.getElementById('doubts-container');
+            if (!container) return;
+            
+            if (doubts.length === 0) {
+                container.innerHTML = '<div style="text-align: center; padding: 2rem; color: #666;">No doubts posted yet. Post your first doubt!</div>';
+                return;
+            }
+            
+            container.innerHTML = doubts.map(doubt => {
+                const voteKey = `doubt-vote-${doubt.id}`;
+                const voted = localStorage.getItem(voteKey);
+                return `
+                <div class="card">
+                    <h4 style="color: var(--primary);">${doubt.title}</h4>
+                    ${doubt.description ? `<p style=\"color: #666; margin: 0.5rem 0;\">${doubt.description}</p>` : ''}
+                    ${doubt.file_type !== 'none' ? `<div style=\"margin: 1rem 0; color: var(--info);\"><em>📎 File attached (${doubt.file_type})</em></div>` : ''}
+                    <div style="margin: 1rem 0; display: flex; gap: 1rem; align-items: center;">
+                        <button class="btn btn-success" onclick="upvoteDoubt(${doubt.id})" id="upvote-btn-${doubt.id}" ${voted ? 'disabled' : ''}>👍 Upvote (<span id="upvotes-${doubt.id}">${doubt.upvotes}</span>)</button>
+                        <button class="btn btn-warning" onclick="downvoteDoubt(${doubt.id})" id="downvote-btn-${doubt.id}" ${voted ? 'disabled' : ''}>👎 Downvote (<span id="downvotes-${doubt.id}">${doubt.downvotes}</span>)</button>
+                    </div>
+                    ${doubt.answers.map(answer => `
+                        <div style="background: ${answer.is_ai ? '#e8f4fd' : '#f8f9fa'}; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <strong style="color: var(--primary);">${answer.author} ${answer.is_ai ? '🤖' : ''}</strong>
+                                <small style="color: #888;">${answer.timestamp}</small>
+                            </div>
+                            <p style="white-space: pre-wrap;">${answer.content}</p>
+                        </div>
+                    `).join('')}
+                    <div style="color: #888; font-size: 0.9rem; margin-top: 1rem;">
+                        Posted on ${doubt.timestamp} • ${doubt.answers.length} answers
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function showPostDoubt() {
+            document.getElementById('post-doubt').style.display = 'block';
+            document.getElementById('doubt-title').focus();
+        }
+
+        function hidePostDoubt() {
+        // Upvote and Downvote functions
+        function upvoteDoubt(id) {
+            const voteKey = `doubt-vote-${id}`;
+            if (localStorage.getItem(voteKey)) {
+                alert('You have already voted on this doubt.');
+                return;
+            }
+            fetch(`/api/doubts/${id}/upvote`, {method: 'POST'})
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById(`upvotes-${id}`).textContent = data.upvotes;
+                        localStorage.setItem(voteKey, 'up');
+                        document.getElementById(`upvote-btn-${id}`).disabled = true;
+                        document.getElementById(`downvote-btn-${id}`).disabled = true;
+                    }
+                });
+        }
+
+        function downvoteDoubt(id) {
+            const voteKey = `doubt-vote-${id}`;
+            if (localStorage.getItem(voteKey)) {
+                alert('You have already voted on this doubt.');
+                return;
+            }
+            fetch(`/api/doubts/${id}/downvote`, {method: 'POST'})
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById(`downvotes-${id}`).textContent = data.downvotes;
+                        localStorage.setItem(voteKey, 'down');
+                        document.getElementById(`upvote-btn-${id}`).disabled = true;
+                        document.getElementById(`downvote-btn-${id}`).disabled = true;
+                    }
+                });
+        }
+
+        // Make upvote/downvote globally accessible
+        window.upvoteDoubt = upvoteDoubt;
+        window.downvoteDoubt = downvoteDoubt;
+            document.getElementById('post-doubt').style.display = 'none';
+            document.getElementById('doubt-form').reset();
+        }
+
+        async function handleDoubtSubmit(event) {
+            event.preventDefault();
+            
+            const btn = document.getElementById('doubt-submit-btn');
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<div class="loading"></div> Posting...';
+            btn.disabled = true;
+            
+            const formData = new FormData();
+            formData.append('title', document.getElementById('doubt-title').value);
+            formData.append('description', document.getElementById('doubt-description').value);
+            
+            const fileInput = document.getElementById('doubt-file');
+            if (fileInput.files[0]) {
+                formData.append('file', fileInput.files[0]);
+            }
+            
+            try {
+                const response = await fetch('/api/doubts', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (!response.ok) throw new Error('Failed to post doubt');
+                
+                showAlert('Doubt posted successfully! 🎉', 'success');
+                hidePostDoubt();
+                await loadDoubts();
+                updateStats();
+            } catch (error) {
+                showAlert('Error posting doubt: ' + error.message, 'error');
+            } finally {
+                btn.innerHTML = originalHTML;
+                btn.disabled = false;
+            }
+        }
+
+        // Utility functions
+        function updateStats() {
+            const notesCountEl = document.getElementById('notes-count');
+            const quizCountEl = document.getElementById('quiz-count');
+            const doubtsCountEl = document.getElementById('doubts-count');
+            
+            if (notesCountEl) notesCountEl.textContent = notes.length;
+            if (quizCountEl) quizCountEl.textContent = quizzes.length;
+            if (doubtsCountEl) doubtsCountEl.textContent = doubts.length;
+        }
+
+        function showAlert(message, type = 'success') {
+            // Remove existing alerts
+            document.querySelectorAll('.alert').forEach(alert => alert.remove());
+            
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type}`;
+            alertDiv.innerHTML = `
+                <span>${type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️'}</span>
+                <span>${message}</span>
+            `;
+            
+            const mainContent = document.querySelector('.main-content');
+            if (mainContent) {
+                mainContent.insertBefore(alertDiv, mainContent.firstChild);
+                
+                // Auto-remove after 5 seconds
+                setTimeout(() => {
+                    if (alertDiv.parentNode) {
+                        alertDiv.remove();
+                    }
+                }, 5000);
+            }
+        }
+
+        // Make functions available globally for onclick handlers
+        window.showSection = showSection;
+        window.exploreSubject = exploreSubject;
+        window.viewSubjectDetail = viewSubjectDetail;
+        window.viewSubjectVideos = viewSubjectVideos;
+        window.playVideo = playVideo;
+        window.showCreateNote = showCreateNote;
+        window.hideCreateNote = hideCreateNote;
+        window.expandNote = expandNote;
+        window.startQuiz = startQuiz;
+        window.selectAnswer = selectAnswer;
+        window.nextQuestion = nextQuestion;
+        window.previousQuestion = previousQuestion;
+        window.submitQuiz = submitQuiz;
+        window.exitQuiz = exitQuiz;
+        window.backToQuizzes = backToQuizzes;
+        window.askAITutor = askAITutor;
+        window.askExample = askExample;
+        window.showPostDoubt = showPostDoubt;
+        window.hidePostDoubt = hidePostDoubt;
+
+        console.log('KnowVia loaded successfully!');
+    </script>
+</body>
+</html>'''
