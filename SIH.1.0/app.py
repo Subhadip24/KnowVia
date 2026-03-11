@@ -31,7 +31,7 @@ if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
 
 # Gemini API setup
-GEMINI_API_KEY = "AIzaSyDw4gki0SKBtItufQDf57UUTSv8v2yq0Ws"
+GEMINI_API_KEY = ""
 if GOOGLE_AI_AVAILABLE and GEMINI_API_KEY != "YOUR_GEMINI_API_KEY_HERE":
     try:
         genai.configure(api_key=GEMINI_API_KEY)
