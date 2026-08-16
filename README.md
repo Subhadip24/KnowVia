@@ -53,9 +53,8 @@ Notes, videos, and AI queries are all API-driven
 | AI             | **Gemini**                                    |
 
 
-# 🔐 Environment Variables
-
-GEMINI_API_KEY=AIzaSyDOi-uNDjKqvud3N854xQdOhgfZ2a4PrwI
+# 🔐 Environment 
+GEMINI_API_KEY==
 
 # 📦 Installation & Setup
 Clone the repository
